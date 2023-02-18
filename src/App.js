@@ -9,13 +9,14 @@ import { AuthProvider } from "./context/AuthContext";
 import { Home } from "./components/Home";
 import { Nomina } from "./components/Nomina";
 import { Matricula } from "./components/Matrucula";
+import { Login } from "./components/Login";
 function App() {
   return (
    
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Inicio/>} />
-          
+          <Route path="/" element={<Home/>} />
+          <Route path="/login" element={<Login />} />
           <Route path="/matricula" element={<Matricula />} />
         </Routes>
       </AuthProvider>
