@@ -8,6 +8,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { Home } from "./components/Home";
 import { Nomina } from "./components/Nomina";
+import { Matricula } from "./components/Matrucula";
 function App() {
   return (
    
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio/>} />
           
-          <Route path="/home" element={<Nomina />} />
+          <Route path="/matricula" element={<Matricula />} />
         </Routes>
       </AuthProvider>
   );

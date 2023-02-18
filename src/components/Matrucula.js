@@ -9,7 +9,7 @@ import $ from 'jquery';
 import { savematricula } from "../database";
 import { uploadcomprobante } from "../firebase";
 
-export function Nomina() {
+export function Matricula() {
     useEffect(() => {
         document.title = "Módulo de Gestión de Trámites"
     }, []);
@@ -43,37 +43,37 @@ export function Nomina() {
             setError(error.message);
         }
     };
-   
-    const[file,setfile]=useState(null);
-    const[name,setname]=useState("");
-    const[valor,setvalor]=useState("");
-    const[añoacursar,setaño]=useState("");
-    const[fechamatri,setfechamatri]=useState("");
-    const[instfinan,setinstfinan]=useState("");
-    const[pago,setpago]=useState("");
-    const[num,setnum]=useState("");
-    const[fechadeposito,setfechadeposito]=useState("");
-const guradar= async()=>{
-    try {
-       const urlc = await uploadcomprobante(file);
-const datos={
-    nombre:name,
-    valor_matricula:valor,
-    añoacursar:añoacursar,
-    fecha_matricula:fechamatri,
-    institucion_financiera:instfinan,
-    forma_de_pago:pago,
-    numero_comprobante:num,
-    fecha_deposito:fechadeposito,
-    comprobanteimg:urlc
-}
-console.log(datos)
 
-await savematricula(datos);
-    } catch (error) {
-       console.log(error.message);
-    }
-};
+    const [file, setfile] = useState(null);
+    const [name, setname] = useState("");
+    const [valor, setvalor] = useState("");
+    const [añoacursar, setaño] = useState("");
+    const [fechamatri, setfechamatri] = useState("");
+    const [instfinan, setinstfinan] = useState("");
+    const [pago, setpago] = useState("");
+    const [num, setnum] = useState("");
+    const [fechadeposito, setfechadeposito] = useState("");
+    const guradar = async () => {
+        try {
+            const urlc = await uploadcomprobante(file);
+            const datos = {
+                nombre: name,
+                valor_matricula: valor,
+                añoacursar: añoacursar,
+                fecha_matricula: fechamatri,
+                institucion_financiera: instfinan,
+                forma_de_pago: pago,
+                numero_comprobante: num,
+                fecha_deposito: fechadeposito,
+                comprobanteimg: urlc
+            }
+            console.log(datos)
+
+            await savematricula(datos);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
     return (
         <div id="wrapper">
             <div class="navbar navbar-inverse navbar-fixed-top">
@@ -109,99 +109,21 @@ await savematricula(datos);
                     <ul class="nav" id="main-menu">
                         <li class="text-center user-image-back">
                             <img src="assets/img/tramites.png" style={{ width: 250 }} />
-
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-edit "></i>Estudiantes a legalizar<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="2EGB.html"><i class="fa fa-desktop "></i> 2 EGB </a>
-                                </li>
-
-                                <li>
-                                    <a href="3EGB.html"><i class="fa fa-desktop "></i> 3 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="4EGB.html"><i class="fa fa-desktop "></i> 4 EGB </a>
-                                </li>
-
-                                <li>
-                                    <a href="5EGB.html"><i class="fa fa-desktop "></i> 5 EGB </a>
-
-                                </li>
-                                <li>
-                                    <a href="6EGB.html"><i class="fa fa-desktop "></i> 6 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="7EGB.html"><i class="fa fa-desktop "></i> 7 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="8EGB.html"><i class="fa fa-desktop "></i> 8 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="9EGB.html"><i class="fa fa-desktop "></i> 9 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="10EGB.html"><i class="fa fa-desktop "></i> 10 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="1BGU.html"><i class="fa fa-desktop "></i> 1 BGU </a>
-                                </li>
-                                <li>
-                                    <a href="2BGU.html"><i class="fa fa-desktop "></i> 2 BGU </a>
-                                </li>
-                                <li>
-                                    <a href="3BGU.html"><i class="fa fa-desktop "></i> 3 BGU </a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-edit "></i>Estudiantes matriculados<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="2EGBM.html"><i class="fa fa-desktop "></i> 2 EGB </a>
-                                </li>
-
-                                <li>
-                                    <a href="3EGBM.html"><i class="fa fa-desktop "></i> 3 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="4EGBM.html"><i class="fa fa-desktop "></i> 4 EGB </a>
-                                </li>
-
-                                <li>
-                                    <a href="5EGBM.html"><i class="fa fa-desktop "></i> 5 EGB </a>
-
-                                </li>
-                                <li>
-                                    <a href="6EGBM.html"><i class="fa fa-desktop "></i> 6 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="7EGBM.html"><i class="fa fa-desktop "></i> 7 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="8EGBM.html"><i class="fa fa-desktop "></i> 8 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="9EGBM.html"><i class="fa fa-desktop "></i> 9 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="10EGBM.html"><i class="fa fa-desktop "></i> 10 EGB </a>
-                                </li>
-                                <li>
-                                    <a href="1BGUM.html"><i class="fa fa-desktop "></i> 1 BGU </a>
-                                </li>
-                                <li>
-                                    <a href="2BGUM.html"><i class="fa fa-desktop "></i> 2 BGU </a>
-                                </li>
-                                <li>
-                                    <a href="3BGUM.html"><i class="fa fa-desktop "></i> 3 BGU </a>
-                                </li>
-                            </ul>
+                            <a href="inicio.html"><i class="fa fa-desktop "></i>Inicio</a>
                         </li>
+                        <li>
+                            <a href="fichasocioeconomica.html"><i class="fa fa-table "></i>Ficha socioeconómica</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-edit "></i>Matrícula</a>
+                        </li>
+
                     </ul>
+
                 </div>
+
             </nav>
 
 
@@ -211,7 +133,7 @@ await savematricula(datos);
                         <div class="col-md-12">
                             <div class="btn-info">
                                 <div class="panel-heading">
-                                    <h2><b>Matrícula</b></h2>
+                                    <h2 style={{"text-align":"center"}}><b>Matrícula</b></h2>
                                 </div>
                             </div>
                         </div>
@@ -229,15 +151,15 @@ await savematricula(datos);
                                         </div>
                                         <div class="form-group">
                                             <label>Nombre de representante</label>
-                                            <input type="email" class="form-control" id="valor" placeholder="Nombre del representante"  onChange={e=>setname(e.target.value)}/>
+                                            <input type="email" class="form-control" id="valor" placeholder="Nombre del representante" onChange={e => setname(e.target.value)} />
                                         </div>
                                         <div class="form-group">
                                             <label>Valor de matrícula</label>
-                                            <input type="email" class="form-control" id="valor" placeholder="Valor de matrícula" onChange={e=>setvalor(e.target.value)} />
+                                            <input type="email" class="form-control" id="valor" placeholder="Valor de matrícula" onChange={e => setvalor(e.target.value)} />
                                         </div>
                                         <div class="form-group">
                                             <label>Año a cursar</label>
-                                            <select id="añoacursar" class="form-control select2" style={{ "width": "100%" }} onChange={e=>setaño(e.target.value)}>
+                                            <select id="añoacursar" class="form-control select2" style={{ "width": "100%" }} onChange={e => setaño(e.target.value)}>
                                                 <option selected="selected">seleccionar</option>
                                                 <option>1 EGB</option>
                                                 <option>2 EGB</option>
@@ -262,7 +184,7 @@ await savematricula(datos);
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
                                                     <input id="fechamatricula" type="date" class="form-control"
-                                                        data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  onChange={e=>setfechamatri(e.target.value)}/>
+                                                        data-inputmask="'alias': 'dd/mm/yyyy'" data-mask onChange={e => setfechamatri(e.target.value)} />
                                                 </div>
                                             </div>
                                         </div>
@@ -279,7 +201,7 @@ await savematricula(datos);
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label>Institución Financiera</label>
-                                                <select id="institucionfinanciera" class="form-control select2" style={{ "width": "100%" }}  onChange={e=>setinstfinan(e.target.value)}>
+                                                <select id="institucionfinanciera" class="form-control select2" style={{ "width": "100%" }} onChange={e => setinstfinan(e.target.value)}>
                                                     <option selected="selected">seleccione</option>
                                                     <option>Banco de Loja</option>
                                                     <option>Western Union</option>
@@ -288,7 +210,7 @@ await savematricula(datos);
 
                                             <div class="form-group">
                                                 <label>Tipo de pago</label>
-                                                <select id="tipodepago" class="form-control select2" style={{ "width": "100%" }}  onChange={e=>setpago(e.target.value)}>
+                                                <select id="tipodepago" class="form-control select2" style={{ "width": "100%" }} onChange={e => setpago(e.target.value)}>
                                                     <option selected="selected">seleccione</option>
                                                     <option>Depósito</option>
                                                     <option>Transferencia</option>
@@ -303,7 +225,7 @@ await savematricula(datos);
                                                         <i class="fa fa-laptop"></i>
                                                     </div>
                                                     <input id="numerodecomprobante" type="email" class="form-control"
-                                                        placeholder="Número de comprobante" onChange={e=>setnum(e.target.value)} />
+                                                        placeholder="Número de comprobante" onChange={e => setnum(e.target.value)} />
                                                 </div>
 
                                             </div>
@@ -316,14 +238,14 @@ await savematricula(datos);
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
                                                     <input id="fechadeposito" type="date" class="form-control"
-                                                        data-inputmask="'alias': 'mm/dd/yyyy'" data-mask   onChange={e=>setfechadeposito(e.target.value)}/>
+                                                        data-inputmask="'alias': 'mm/dd/yyyy'" data-mask onChange={e => setfechadeposito(e.target.value)} />
                                                 </div>
 
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="exampleInputFile">Subir el comprobante de pago</label>
-                                                <input id="comprobante" type="file" onChange={e=> setfile(e.target.files[0])}/>
+                                                <input id="comprobante" type="file" onChange={e => setfile(e.target.files[0])} />
 
 
                                             </div>
@@ -332,9 +254,11 @@ await savematricula(datos);
 
                                     <div class="row no-print">
                                         <div class="col-xs-12">
-                                            <button id="enviar"  onClick={guradar} type="button" class="btn btn-success" style={{"margin-left": "50%",
-  "transform": "translateX(-50%)","margin-bottom": "20px"}}><i
-                                               class="fa fa-credit-card"></i> ENVIAR
+                                            <button id="enviar" onClick={guradar} type="button" class="btn btn-success" style={{
+                                                "margin-left": "50%",
+                                                "transform": "translateX(-50%)", "margin-bottom": "20px"
+                                            }}><i
+                                                class="fa fa-credit-card"></i> ENVIAR
                                             </button>
                                         </div>
                                     </div>
