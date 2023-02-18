@@ -3,42 +3,52 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import "./css/stylelogin.css"
-import "./js/loginjqery.js"
+
 export function Home() {
 
 
   return (
-    <div id="logreg-forms">
-      <Form id="login-form" className="form-signin">
-        <h1 className="h3 mb-3 font-weight-normal "> Iniciar sesión</h1>
-        <div className="social-login">
-          <Button className="btn facebook-btn social-btn"><span><i
-            className="fab fa-facebook-f"></i> Iniciar sesión con
-            Facebook</span>
-          </Button>
-          <Button className="btn google-btn social-btn"><span><i className="fab fa-google-plus-g"></i> Iniciar sesión con Google</span>
-          </Button>
+    <div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-danger ftco-navbar-dark" id="ftco-navbar">
+      <div class="top-header">
+        <div class="container h-100">
+          <div class="row h-100">
+            <div class="col-12 h-100">
+              <div class="header-content h-100 d-flex align-items-center justify-content-between">
+                <div class="academy-logo">
+                  <a href="Index.html"><img src="images/Logo IE1.png" style={{ width: 155 }} /></a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="d-flex justify-content-center "> O </p>
+      </div>
 
-        <Form.Control type="email" id="email" name="email" className="form-control" placeholder="Email address" />
-        <Form.Control type="password" id="password" name="password" className="form-control" placeholder="Password" required="" />
 
-        <Button className="btn btn-success btn-block" type="submit"><i className="fas fa-sign-in-alt"></i>Iniciar Sesión</Button>
-        <Link id="forgot_pswd" >Olvido su contraseña?</Link>
-        <hr></hr>
-        <Button className="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i>Iniciar con una cuenta nueva</Button>
-      </Form>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="Index.html" class="nav-link">INICIO</a></li>
 
-      <Form className="form-reset">
-      <Form.Control type="email" id="resetEmail" className="form-control" placeholder="Correo electronico" required="" />
-          <Button className="btn btn-primary btn-block"type="submit"> Recuperar contraseña
-          </Button>
-          
-        <Link id="cancel_reset" ><i class="fas fa-angle-left"></i> Volver</Link>
-        </Form>
+        </ul>
+      </div>
+  </nav >
+  
+    
+    <div class="hero-wrap fondo" >
+      <div class="overlay">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" >
+          <div class="col-md-12 text-center">
+            <h1 class="mb-4" style={{color:"white"}}><h1>MÓDULO DE MATRICULACIÓN</h1></h1>
+            <p><a class="btn btn-info px-4 py-3" href="ingresar.html">INGRESAR</a></p>
+              
+          </div>
+        </div>
+      </div>
     </div>
+    </div>
+      
+ </div>
 
   );
 }
