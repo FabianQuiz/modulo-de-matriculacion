@@ -1,10 +1,10 @@
 # Getting Started with Create React App
 
 Este proyecto ha sido desarrollado por:
-Fabian Quizhpe
-Andrea Abad
-Maykel Valladares
-Maicol Rojas
+Fabian Quizhpe-
+Andrea Abad-
+Maykel Valladares-
+Maicol Rojas-
 
 ## Available Scripts
 
