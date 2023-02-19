@@ -6,26 +6,33 @@ import { useAuth } from "../context/AuthContext";
 export function Login() {
     useEffect(() => {
         document.title = "Iniciar Sesión"
-     }, []);
-      const [email, setemail] = useState("");
-      const [password, setpassword] = useState("");
-      const { login} = useAuth();
-      const [error, setError] = useState("");
-      const navigate = useNavigate();
-      const handleSubmit = async (e) => {
+    }, []);
+    const [email, setemail] = useState("");
+    const [password, setpassword] = useState("");
+    const { login, loginWithGoogle } = useAuth();
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
         try {
-        console.log(email, password,"hola");
-          await login(email, password);
+            console.log(email, password, "hola");
+            await login(email, password);
+            navigate("/inicio");
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+    const handleGoogleSignin = async () => {
+        try {
+          await loginWithGoogle();
           navigate("/inicio");
         } catch (error) {
           setError(error.message);
         }
       };
-    
-      
-    
+
+
 
     return (
         <div id="wrapper">
@@ -73,60 +80,43 @@ export function Login() {
                             </div>
 
 
+                            <button onClick={handleGoogleSignin} class="btn-google"> <img width="40px" style={{ "margin-right": "8px" }} alt="Google sign-in"
+                                src="images/google.png" />INICIAR SESIÓN CON GOOGLE</button>
+
+                            <h1 class="text-center">O</h1>
                             <form class="login-form" onSubmit={handleSubmit}>
-                                    <div class="form-group has-feedback">
-                                        <input id="login_email" type="email" class="form-control" placeholder="Usuario"  onChange={e=>setemail(e.target.value)}/>
-                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                                    </div>
-                                    <div class="form-group has-feedback">
-                                        <input id="login_password" type="password" class="form-control" placeholder="Contraseña" onChange={e=>setpassword(e.target.value)}/>
-                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                    </div>
+                                <div class="form-group has-feedback">
+                                    <input id="login_email" type="email" class="form-control" placeholder="Usuario" onChange={e => setemail(e.target.value)} />
+                                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <input id="login_password" type="password" class="form-control" placeholder="Contraseña" onChange={e => setpassword(e.target.value)} />
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
 
-                                    <div class="col-xm-4">
-                                        <button type="submit" id="login" class="btn btn-info px-4 py-3">INICIAR SESIÓN</button>
+                                <div class="col-xm-4">
+                                    <button type="submit" id="login" class="btn btn-info px-4 py-3" style={{"display": "block","margin-left": "auto","margin-right": "auto"}}>INICIAR SESIÓN</button>
 
-                                        </div>
-                                </form>
+                                </div>
+                            </form>
 
                         </div>
-                        
-                       
+
+
 
                     </div>
                 </div>
             </section >
 
 
-            <div class="container">
-                <div class="row slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-                    <div class="col-md-8 ftco-animate text-center fadeInUp ftco-animated">
-
-                        <div class="login-box">
-                            
-                            <div class="login-box-body">
-                              
-                                </div>
-
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-
             <footer >
                 <div class="bottom-footer-area">
                     <div class="container">
                         <div class="row">
-                            <div class="col-12">
-                                <p>
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> ProWeb - UNL | Todos los derechos reservados
-                                </p>
-                            </div>
+                            <p>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> ProWeb - UNL | Todos los derechos reservados
+                            </p>
+
                         </div>
                     </div>
                 </div >

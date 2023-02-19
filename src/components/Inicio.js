@@ -20,37 +20,9 @@ export function Inicio() {
       console.error(error.message);
     }
   };
-
-  const [file, setfile] = useState(null);
-  const [name, setname] = useState("");
-  const [valor, setvalor] = useState("");
-  const [añoacursar, setaño] = useState("");
-  const [fechamatri, setfechamatri] = useState("");
-  const [instfinan, setinstfinan] = useState("");
-  const [pago, setpago] = useState("");
-  const [num, setnum] = useState("");
-  const [fechadeposito, setfechadeposito] = useState("");
-  const guradar = async () => {
-    try {
-      const urlc = await uploadcomprobante(file);
-      const datos = {
-        nombre: name,
-        valor_matricula: valor,
-        añoacursar: añoacursar,
-        fecha_matricula: fechamatri,
-        institucion_financiera: instfinan,
-        forma_de_pago: pago,
-        numero_comprobante: num,
-        fecha_deposito: fechadeposito,
-        comprobanteimg: urlc
-      }
-      console.log(datos)
-
-      await savematricula(datos);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  const [urlimg, seturlimg] = useState(user.photoURL);
+  console.log(urlimg);
+ 
   return (
     <div id="wrapper">
       <div class="navbar navbar-inverse navbar-fixed-top">
@@ -68,7 +40,7 @@ export function Inicio() {
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
 
-              <li><a><img src="assets/img/Foto perfil.png" style={{ width: 25 }} />
+              <li><a><img src={user.photoURL ||"images/user.png"} style={{ width: 25 }} />
                 <font color="white"> {user.displayName || user.email}</font>
               </a></li>
               <li><a onClick={handleLogout}><img src="images/cerrar1.png" style={{ width: 19 }} />
@@ -94,7 +66,6 @@ export function Inicio() {
               <a href="fichasocioeconomica.html"><i class="fa fa-table "></i>Ficha socioeconómica</a>
             </li>
           </ul>
-
         </div>
 
       </nav>
@@ -110,7 +81,7 @@ export function Inicio() {
                   <h5 class="card-title h5">Datos del usuario:</h5>
                   <div class="profile-userpic">
                   <a href="javascript:void(0);" class="foto-perfil-actualizar-modal" data-id="22411">
-                    <img src={user.photoUrl ||"images/user.png"} class="img-responsive foto-perfil-thumbnail" alt="Foto de perfil" data-id="22411"/>
+                    <img src={user.photoURL ||"images/user.png"} class="img-responsive foto-perfil-thumbnail" alt="Foto de perfil" data-id="22411"/>
                 </a>
                 </div>
                   <div class="profile-usertitle">
