@@ -2,88 +2,84 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Alert } from "./Alert";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import $ from 'jquery';
-
-const ocultamenu = () => {
-  $('#sliders').removeClass('active');
-  $('#sliders-background').removeClass('active');
-};
-
+import { savematricula } from "../database";
+import { uploadcomprobante } from "../firebase";
 export function Inicio() {
   useEffect(() => {
     document.title = "Módulo de Gestión de Trámites"
   }, []);
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-  const { login, loginWithGoogle, loginWithFacebook, resetPassword } = useAuth();
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  const { logout, user } = useAuth();
+
+  console.log(user);
+  const handleLogout = async () => {
     try {
-      await login(user.email, user.password);
-      navigate("/calendar");
+      await logout();
     } catch (error) {
-      setError(error.message);
+      console.error(error.message);
     }
   };
 
-  const handleChange = ({ target: { value, name } }) =>
-    setUser({ ...user, [name]: value });
-
-  const handleGoogleSignin = async () => {
+  const [file, setfile] = useState(null);
+  const [name, setname] = useState("");
+  const [valor, setvalor] = useState("");
+  const [añoacursar, setaño] = useState("");
+  const [fechamatri, setfechamatri] = useState("");
+  const [instfinan, setinstfinan] = useState("");
+  const [pago, setpago] = useState("");
+  const [num, setnum] = useState("");
+  const [fechadeposito, setfechadeposito] = useState("");
+  const guradar = async () => {
     try {
-      await loginWithGoogle();
-      navigate("/calendar");
+      const urlc = await uploadcomprobante(file);
+      const datos = {
+        nombre: name,
+        valor_matricula: valor,
+        añoacursar: añoacursar,
+        fecha_matricula: fechamatri,
+        institucion_financiera: instfinan,
+        forma_de_pago: pago,
+        numero_comprobante: num,
+        fecha_deposito: fechadeposito,
+        comprobanteimg: urlc
+      }
+      console.log(datos)
+
+      await savematricula(datos);
     } catch (error) {
-      setError(error.message);
+      console.log(error.message);
     }
   };
-  const handleFacebookSignin = async () => {
-    try {
-      await loginWithFacebook();
-      navigate("/calendar");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
   return (
     <div id="wrapper">
       <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="adjust-nav">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="inicio.html"><img src="images/Logo IE1.png" style={{width: 100}}/></a><b>
-            <font color="white"> l SISTEMA DE MATRICULACIÓN</font>
-          </b>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-           
-            <li><a href="inicio.html"><img src="assets/img/Foto perfil.png" style={{width: 25}}/>
-                <font color="white"> Fabián Andrés Quizhpe Quizhpe</font>
+        <div class="adjust-nav">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="inicio.html"><img src="images/Logo IE1.png" style={{ width: 100 }} /></a><b>
+              <font color="white"> l SISTEMA DE MATRICULACIÓN</font>
+            </b>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+              <li><a><img src="assets/img/Foto perfil.png" style={{ width: 25 }} />
+                <font color="white"> {user.displayName || user.email}</font>
               </a></li>
-            <li><a href="ingresar.html"><img src="images/cerrar1.png" style={{width: 19}}/>
+              <li><a onClick={handleLogout}><img src="images/cerrar1.png" style={{ width: 19 }} />
                 <font color="white"> Cerrar Sesión</font>
               </a></li>
-           
-          </ul>
-        </div>
 
+            </ul>
+          </div>
+
+        </div>
       </div>
-    </div>
 
       <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
@@ -98,80 +94,63 @@ export function Inicio() {
               <a href="fichasocioeconomica.html"><i class="fa fa-table "></i>Ficha socioeconómica</a>
             </li>
             <li>
-              <a href="matricula.html"><i class="fa fa-edit "></i>Matrícula</a>
+              <a href="#"><i class="fa fa-edit "></i>Matrícula</a>
             </li>
+
           </ul>
+
         </div>
+
       </nav>
-      <div id="page-wrapper">
+
+
+      <div id="page-wrapper" style={{ height:400}}>
         <div id="page-inner">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="btn-info">
-                <div class="panel-heading">
-                  <h2><b>Datos de la cuenta</b></h2>
+          <h2>Bienvenido</h2>
+          <div class="col-md-12">
+            <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title h5">Datos del usuario:</h5>
+                  <div class="profile-userpic">
+                  <a href="javascript:void(0);" class="foto-perfil-actualizar-modal" data-id="22411">
+                    <img src={user.photoUrl ||"images/user.png"} class="img-responsive foto-perfil-thumbnail" alt="Foto de perfil" data-id="22411"/>
+                </a>
+                </div>
+                  <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                      <span class="text-danger">{user.email} <i class="fa fa-close"></i></span>
+                    </div>
+                    <div class="profile-usertitle-job">
+                    {user.displayName || user.email}
+                    </div>
+                  </div>
+                  <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                      <b>Activo</b> <a class="pull-right fa fa-check"></a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-
-              <section class="content">
-                <div class="row">
-
-                  <div class="col-md-6">
-
-                    <div class="box box-primary">
-                      <div class="box-header with-border">
-
-                      </div>
-
-
-                      <form role="form">
-                        <div class="box-body">
-                          <div class="form-group">
-
-                            <label for="exampleInputEmail1">Nombre de usuario</label>
-                            <div class="panel-body">
-                              <a>Fabián Andrés Quizhpe Quizhpe ✔</a>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Correo electrónico</label>
-                            <div class="panel-body">
-                              <a>fabian.quizhpe@unl.edu.ec ✔</a>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Estado</label>
-                            <div class="panel-body">
-                              <a>Activo ✔</a>
-                            </div>
-                          </div>
-                          <div class="form-group">
-
-                          </div>
-                          <div class="checkbox">
-                            <label>
-
-                            </label>
-                          </div>
-                        </div>
-
-
-                        <div class="row no-print">
-                          <div class="col-xs-12">
-
-                          </div>
-                        </div>
-
-                      </form>
-                    </div>
-
-                  </div>
-                </div>
-              </section>
-
             </div>
+
+            <div class="profile-sidebar1">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title h5">Información personal:</h5>
+                  
+                  <h4>Curso: </h4>
+                  <h4 >Estado de matricula: </h4>
+                  <a class="btn btn-primary pull-right" href="/core/persona/detalle/114244">
+                                                                        <i class="fa fa-arrow-circle-right"></i> Ir a perfil
+                                                                    </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
         <footer class="main-footer">
           <div class="pull-right hidden-xs">
             <b>Version</b> 1.0
@@ -179,7 +158,6 @@ export function Inicio() {
           <strong>Copyright &copy; 2022-2023 <a>ProWeb - UNL</a>.</strong> Todos los derechos reservados.
         </footer>
       </div>
-    </div>
-
+    </div >
   );
 }

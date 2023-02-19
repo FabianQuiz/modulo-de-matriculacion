@@ -42,7 +42,6 @@ body {
     background-color: #009FFD;
 }
 
-h5,
 .h5 {
     font-size: 14px;
     font-weight: 900;
@@ -518,12 +517,6 @@ h5,
     }
 }
 
-.single-top-popular-course .popular-course-content h5 {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-
 .single-top-popular-course .popular-course-content span {
     font-size: 12px;
     color: #61ba6d;
@@ -616,12 +609,6 @@ h5,
     }
 }
 
-.popular-course-details-area .single-top-popular-course .popular-course-content h5 {
-    font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    margin-left: -2px;
-}
 
 .popular-course-details-area .single-top-popular-course .popular-course-content span {
     font-size: 14px;

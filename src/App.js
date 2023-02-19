@@ -6,6 +6,7 @@ import { Home } from "./components/Home";
 import { Nomina } from "./components/Nomina";
 import { Matricula } from "./components/Matricula";
 import { Login } from "./components/Login";
+import { Inicio } from "./components/Inicio";
 function App() {
   return (
    
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/matricula" element={<ProtectedRoute><Matricula/></ProtectedRoute>} />
+          <Route path="/inicio" element={<ProtectedRoute><Inicio/></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
   );
