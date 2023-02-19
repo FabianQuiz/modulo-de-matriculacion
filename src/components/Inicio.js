@@ -22,7 +22,7 @@ export function Inicio() {
   };
   const [urlimg, seturlimg] = useState(user.photoURL);
   console.log(urlimg);
- 
+
   return (
     <div id="wrapper">
       <div class="navbar navbar-inverse navbar-fixed-top">
@@ -40,7 +40,7 @@ export function Inicio() {
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
 
-              <li><a><img src={user.photoURL ||"images/user.png"} style={{ width: 25 }} />
+              <li><a><img src={user.photoURL || "images/user.png"} style={{ width: 25 }} />
                 <font color="white"> {user.displayName || user.email}</font>
               </a></li>
               <li><a onClick={handleLogout}><img src="images/cerrar1.png" style={{ width: 19 }} />
@@ -80,16 +80,16 @@ export function Inicio() {
                 <div class="card-body">
                   <h5 class="card-title h5">Datos del usuario:</h5>
                   <div class="profile-userpic">
-                  <a href="javascript:void(0);" class="foto-perfil-actualizar-modal" data-id="22411">
-                    <img src={user.photoURL ||"images/user.png"} class="img-responsive foto-perfil-thumbnail" alt="Foto de perfil" data-id="22411"/>
-                </a>
-                </div>
+                    <a href="javascript:void(0);" class="foto-perfil-actualizar-modal" data-id="22411">
+                      <img src={urlimg} class="img-responsive foto-perfil-thumbnail" alt="Foto de perfil" data-id="22411" />
+                    </a>
+                  </div>
                   <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
                       <span class="text-danger">{user.email} <i class="fa fa-close"></i></span>
                     </div>
                     <div class="profile-usertitle-job">
-                    {user.displayName || user.email}
+                      {user.displayName || user.email}
                     </div>
                   </div>
                   <ul class="list-group list-group-unbordered">
@@ -105,26 +105,42 @@ export function Inicio() {
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title h5">Información personal:</h5>
-                  
+
                   <h4>Curso: </h4>
                   <h4 >Estado de matricula: </h4>
                   <a class="btn btn-primary pull-right" href="/core/persona/detalle/114244">
-                                                                        <i class="fa fa-arrow-circle-right"></i> Ir a perfil
-                                                                    </a>
+                    <i class="fa fa-arrow-circle-right"></i> Ir a perfil
+                  </a>
                 </div>
               </div>
             </div>
 
           </div>
+
+
+
+
+
         </div>
 
-        <footer class="main-footer">
-          <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0
-          </div>
-          <strong>Copyright &copy; 2022-2023 <a>ProWeb - UNL</a>.</strong> Todos los derechos reservados.
-        </footer>
+
       </div>
+
+
+      <div class="page-footer">
+          <div class="page-footer-inner"> 
+         < div class="pull-right hidden-xs">
+                        <b>Version</b> 1.0
+                    </div>
+                    <strong>Copyright &copy; 2022-2023 <a>ProWeb - UNL</a>.</strong> Todos los derechos reservados.
+          </div>
+          <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+          </div>
+        </div>
+
+
+
     </div >
   );
 }

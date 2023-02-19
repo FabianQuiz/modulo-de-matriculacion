@@ -38,6 +38,9 @@
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
 }
+.card{
+    border-top: 3px solid #C00;
+}
 .card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
@@ -137,3 +140,56 @@ footer{
     border-color: #e7e1e1;
     margin-bottom: 20px;
 }
+
+.page-footer {
+    padding: 20px;
+    padding-bottom: 20px;
+    font-size: 13px;
+    background-color: #222c3c;
+    height: auto;
+  word-wrap: break-word;
+}
+.page-footer .page-footer-inner {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.page-footer .page-footer-inner {
+    color: #98a6ba;
+}
+.scroll-to-top {
+    padding: 11px;
+    border-radius: 4px;
+    background: #1c262f;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    z-index: 10001;
+    display: none;
+    right: 10px;
+}
+@media (max-width: 991px){
+.scroll-to-top {
+    bottom: 10px;
+    right: 10px;
+}
+.profile-sidebar {
+display: contents;
+}
+.profile-sidebar1 {
+    display: contents;
+    }
+
+}
+.page-footer:after, .page-footer:before {
+    content: " ";
+    display: table;
+}
+.page-footer:after, .page-footer:before {
+    content: " ";
+    display: table;
+}
+@media (min-width: 768px){
+.page-footer {
+    margin: 0 0 0 260px;
+}}

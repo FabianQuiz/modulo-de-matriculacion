@@ -62,13 +62,13 @@ export function Matricula() {
                             <span class="icon-bar"></span>
                         </button>
                         <a href="inicio.html"><img src="images/Logo IE1.png" style={{ width: 100 }} /></a><b>
-                            <font color="white"> l SISTEMA DE MATRICULACIÓN</font>
+                            <font color="white"> | SISTEMA DE MATRICULACIÓN</font>
                         </b>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
 
-                            <li><a><img src="assets/img/Foto perfil.png" style={{ width: 25 }} />
+                            <li><a><img src={user.photoURL}  style={{ width: 25 }} />
                                 <font color="white"> {user.displayName || user.email}</font>
                             </a></li>
                             <li><a onClick={handleLogout}><img src="images/cerrar1.png" style={{ width: 19 }} />
@@ -274,13 +274,17 @@ export function Matricula() {
                     </div>
 
                 </div>
-
-                <footer class="main-footer">
-                    <div class="pull-right hidden-xs">
+            </div>
+            <div class="page-footer">
+                <div class="page-footer-inner">
+                    < div class="pull-right hidden-xs">
                         <b>Version</b> 1.0
                     </div>
                     <strong>Copyright &copy; 2022-2023 <a>ProWeb - UNL</a>.</strong> Todos los derechos reservados.
-                </footer>
+                </div>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
             </div>
         </div >
     );

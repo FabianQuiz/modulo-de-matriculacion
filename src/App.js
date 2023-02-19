@@ -7,6 +7,7 @@ import { Nomina } from "./components/Nomina";
 import { Matricula } from "./components/Matricula";
 import { Login } from "./components/Login";
 import { Inicio } from "./components/Inicio";
+import { Ficha } from "./components/Fichasocio";
 function App() {
   return (
    
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/matricula" element={<ProtectedRoute><Matricula/></ProtectedRoute>} />
           <Route path="/inicio" element={<ProtectedRoute><Inicio/></ProtectedRoute>} />
+          <Route path="/ficha" element={<ProtectedRoute><Ficha/></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
   );
