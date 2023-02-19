@@ -18,7 +18,7 @@ export function Login() {
         try {
         console.log(email, password,"hola");
           await login(email, password);
-          navigate("/matricula");
+          navigate("/inicio");
         } catch (error) {
           setError(error.message);
         }

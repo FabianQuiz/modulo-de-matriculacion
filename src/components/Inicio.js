@@ -93,10 +93,6 @@ export function Inicio() {
             <li>
               <a href="fichasocioeconomica.html"><i class="fa fa-table "></i>Ficha socioeconómica</a>
             </li>
-            <li>
-              <a href="#"><i class="fa fa-edit "></i>Matrícula</a>
-            </li>
-
           </ul>
 
         </div>
@@ -104,7 +100,7 @@ export function Inicio() {
       </nav>
 
 
-      <div id="page-wrapper" style={{ height:400}}>
+      <div id="page-wrapper" >
         <div id="page-inner">
           <h2>Bienvenido</h2>
           <div class="col-md-12">
