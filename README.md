@@ -1,6 +1,10 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto ha sido desarrollado por:
+Fabian Quizhpe
+Andrea Abad
+Maykel Valladares
+Maicol Rojas
 
 ## Available Scripts
 

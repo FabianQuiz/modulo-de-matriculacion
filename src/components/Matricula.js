@@ -2,46 +2,23 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Alert } from "./Alert";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import $ from 'jquery';
 import { savematricula } from "../database";
 import { uploadcomprobante } from "../firebase";
-
 export function Matricula() {
     useEffect(() => {
         document.title = "Módulo de Gestión de Trámites"
     }, []);
-    const [user, setUser] = useState({
-        email: "",
-        password: "",
-    });
-    const { login, loginWithGoogle, loginWithFacebook, resetPassword } = useAuth();
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
+ 
+    const { logout, user } = useAuth();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError("");
-        try {
-            await login(user.email, user.password);
-            navigate("/calendar");
-        } catch (error) {
-            setError(error.message);
-        }
-    };
-
-    const handleChange = ({ target: { value, name } }) =>
-        setUser({ ...user, [name]: value });
-
-    const handleGoogleSignin = async () => {
-        try {
-            await loginWithGoogle();
-            navigate("/calendar");
-        } catch (error) {
-            setError(error.message);
-        }
+    console.log(user);
+    const handleLogout = async () => {
+      try {
+        await logout();
+      } catch (error) {
+        console.error(error.message);
+      }
     };
 
     const [file, setfile] = useState(null);
@@ -91,10 +68,10 @@ export function Matricula() {
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
 
-                            <li><a href="inicio.html"><img src="assets/img/Foto perfil.png" style={{ width: 25 }} />
-                                <font color="white"> Fabián Andrés Quizhpe Quizhpe</font>
+                            <li><a><img src="assets/img/Foto perfil.png" style={{ width: 25 }} />
+                                <font color="white"> {user.displayName || user.email}</font>
                             </a></li>
-                            <li><a href="ingresar.html"><img src="images/cerrar1.png" style={{ width: 19 }} />
+                            <li><a onClick={handleLogout}><img src="images/cerrar1.png" style={{ width: 19 }} />
                                 <font color="white"> Cerrar Sesión</font>
                             </a></li>
 

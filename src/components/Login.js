@@ -1,11 +1,31 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 export function Login() {
-
+    useEffect(() => {
+        document.title = "Iniciar Sesión"
+     }, []);
+      const [email, setemail] = useState("");
+      const [password, setpassword] = useState("");
+      const { login} = useAuth();
+      const [error, setError] = useState("");
+      const navigate = useNavigate();
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");
+        try {
+        console.log(email, password,"hola");
+          await login(email, password);
+          navigate("/matricula");
+        } catch (error) {
+          setError(error.message);
+        }
+      };
+    
+      
+    
 
     return (
         <div id="wrapper">
@@ -19,7 +39,7 @@ export function Login() {
                         </button>
                         <a href="inicio.html"><img src="images/Logo IE1.png" style={{ width: 150 }} /></a>
                     </div>
-                  
+
                 </div>
             </div>
 
@@ -29,7 +49,7 @@ export function Login() {
 
 
 
-            <div class="breadcumb-area bg-img" style={{"background-image": "url(img/bg-img/breadcumb.jpg)"}}>
+            <div class="breadcumb-area bg-img" style={{ "background-image": "url(img/bg-img/breadcumb.jpg)" }}>
                 <div class="bradcumbContent">
                     <h2>INGRESAR</h2>
                 </div>
@@ -51,16 +71,50 @@ export function Login() {
                                     <p>Identifíquese usando su cuenta como:</p>
                                 </div>
                             </div>
+
+
+                            <form class="login-form" onSubmit={handleSubmit}>
+                                    <div class="form-group has-feedback">
+                                        <input id="login_email" type="email" class="form-control" placeholder="Usuario"  onChange={e=>setemail(e.target.value)}/>
+                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <input id="login_password" type="password" class="form-control" placeholder="Contraseña" onChange={e=>setpassword(e.target.value)}/>
+                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                    </div>
+
+                                    <div class="col-xm-4">
+                                        <button type="submit" id="login" class="btn btn-info px-4 py-3">INICIAR SESIÓN</button>
+
+                                        </div>
+                                </form>
+
                         </div>
+                        
+                       
+
                     </div>
                 </div>
             </section >
 
 
+            <div class="container">
+                <div class="row slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+                    <div class="col-md-8 ftco-animate text-center fadeInUp ftco-animated">
 
-            <div class="academy-buttons-area mb-100">
-                <a href="#" class="btn btn-primary px-4 py-3">Administrativos</a>
-                <a href="#" class="btn academy-btn btn-3 m-2">Usuarios</a>
+                        <div class="login-box">
+                            
+                            <div class="login-box-body">
+                              
+                                </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
 
 
