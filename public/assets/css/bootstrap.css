@@ -514,7 +514,7 @@ a.text-success:hover {
   color: #2b542c;
 }
 .text-info {
-  color: #31708f;
+  color: #17a2b8;
 }
 a.text-info:hover {
   color: #245269;
@@ -2163,8 +2163,8 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
 }
 .btn-info:hover,
 .btn-info:focus,

@@ -10,11 +10,11 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
-const collectionName = "reservas";
+const collectionName = "matriculas-pendientes";
 const collectpendiente = "reservas-pendientes";
 
-export const saveWebsite = (newLink) =>
-  addDoc(collection(db, collectionName), newLink);
+export const savematricula = (newMatricula) =>
+  addDoc(collection(db, collectionName), newMatricula);
   export const savependiente = (newpendiente) =>
   addDoc(collection(db, collectpendiente), newpendiente);
 
