@@ -361,19 +361,29 @@ export function Ficha() {
                                                             <option>Educación Física</option>
                                                         </select>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label>Problemas de aprendizaje</label>
+                                                        <select id="problemasdeaprendizaje" class="form-control select2" style={{ "width": "100%;" }}>
+                                                            <option selected="selected">No</option>
+                                                            <option>Si</option>
+                                                            <option>No</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </form>
-                                            <div class="form-group">
-                                                <label>Problemas de aprendizaje</label>
-                                                <select id="problemasdeaprendizaje" class="form-control select2" style={{ "width": "100%;" }}>
-                                                    <option selected="selected">No</option>
-                                                    <option>Si</option>
-                                                    <option>No</option>
-                                                </select>
-                                            </div>
+
                                         </div>
                                     </div>
+                                    <div class="col-md-6 h">
+                                        <a target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</a>
+                                        <button id="save" type="submit" class="btn btn-success "><i class="fa fa-credit-card"></i>  GUARDAR</button>
+                                        <button type="button" class="btn btn-primary " >
+                                            <i class="fa fa-download"></i> Generar PDF
+                                        </button>
+
+                                    </div>
                                 </div>
+
                             </section>
                         </div>
 
