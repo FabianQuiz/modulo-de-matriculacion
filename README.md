@@ -3,11 +3,11 @@
 Este proyecto ha sido desarrollado por:
 Fabian Quizhpe-
 Andrea Abad-
-Maykel Valladares-
-Maicol Rojas-
+Maykel Valladares y
+Maicol Rojas
 
 ## Available Scripts
-
+antes de ejecutar el proyecto debe tener instalado node.js, luego dentro de su editor de codigo ejecutar el comando npm i react y npm start para instalar las dependencias necesarias para correr el programa.
 In the project directory, you can run:
 
 ### `npm start`
