@@ -23,6 +23,29 @@ export function Ficha() {
     const [urlimg, seturlimg] = useState(user.photoURL);
     console.log(urlimg);
 
+
+ 
+    const [name1, setname1] = useState("");
+    const [ci, setci] = useState("");
+    const [dir, setdir] = useState("");
+    const [vivienda, setvivienda] = useState("");
+    const [tipovi, settipovi] = useState("");
+    const [servicios, setservicios] = useState("");
+    const [infra, setinfra] = useState("");
+    const [añoacursar, setañoacursar] = useState("");
+    const [añoapro, setañoapro] = useState("");
+    const [añoper, setañoper] = useState("");
+    const [matfav, setmatfav] = useState("");
+    const [matdif, setmatdif] = useState("");
+    const [problemas, setproblemas] = useState("");
+    const [alergias, setalergias] = useState("");
+    const [medicamentos, setmedicamentos] = useState("");
+    const [dosis, setdosis] = useState("");
+    const [discapacidad, setdiscapacidad] = useState("");
+    const [name2, setname2] = useState("");
+    const [parentesco, setparentesco] = useState("");
+    const [ocupacion, setocupacion] = useState("");
+    const [contacto, setcontacto] = useState("");
     return (
         <div id="wrapper">
             <div class="navbar navbar-inverse navbar-fixed-top">
