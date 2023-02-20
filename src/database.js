@@ -15,8 +15,10 @@ const collectpendiente = "reservas-pendientes";
 
 export const savematricula = (newMatricula) =>
   addDoc(collection(db, collectionName), newMatricula);
-  export const savependiente = (newpendiente) =>
-  addDoc(collection(db, collectpendiente), newpendiente);
+export const matricula = (Matricula) =>
+addDoc(collection(db, "Matriculados"), Matricula);
+export const ficha = (Ficha) =>
+addDoc(collection(db, "Fichas-socioeconomicas"), Ficha);
 
 export const updateWebsite = (id, updatedFields) =>
   updateDoc(doc(db, collectionName, id), updatedFields);
