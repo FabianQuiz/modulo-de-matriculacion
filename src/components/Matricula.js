@@ -5,7 +5,11 @@ import { useAuth } from "../context/AuthContext";
 import $ from 'jquery';
 import { savematricula } from "../database";
 import { uploadcomprobante } from "../firebase";
+
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase";
 export function Matricula() {
+    const navigate = useNavigate();
     useEffect(() => {
         document.title = "Módulo de Gestión de Trámites"
     }, []);
@@ -35,6 +39,7 @@ export function Matricula() {
             const urlc = await uploadcomprobante(file);
             const datos = {
                 nombre: name,
+                user_id:user.uid,
                 valor_matricula: valor,
                 añoacursar: añoacursar,
                 fecha_matricula: fechamatri,
@@ -51,6 +56,27 @@ export function Matricula() {
             console.log(error.message);
         }
     };
+    //fin consulta de datos
+ const [pendientes, setpendientes] = useState([])
+ const mpendientes = async () => {
+
+     const q1 = query(collection(db, "matriculas-pendientes"), where("user_id", "==", user.uid));
+     const unsubscribe = onSnapshot(q1, (data1) => {
+         const docs2 = [];
+         data1.forEach((doc) => {
+             console.log("pendientes", doc.data())
+             docs2.push({ ...doc.data(), id: doc.id });
+
+         });
+         setpendientes(docs2)
+     })
+ }
+ useEffect(() => {
+     mpendientes();
+ }, [])
+ {
+  if (pendientes.length === 1) navigate("/estado-matricula") ;
+ };
     return (
         <div id="wrapper">
             <div class="navbar navbar-inverse navbar-fixed-top">
@@ -246,32 +272,6 @@ export function Matricula() {
                     </section>
 
 
-
-                    <div class="row">
-                        <div class="col-md-15">
-                            <div class="btn-info">
-                                <div class="panel-heading text-center">
-                                    <h2><b>Estado de la Matrícula</b></h2>
-                                </div>
-                            </div>
-
-                            <hr />
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="panel panel-primary text-center no-boder bg-color-blue">
-                                        <div class="panel-body">
-                                            <i class="fa fa-desktop fa-2    x"></i>
-                                            <h3>Procesando </h3>
-                                        </div>
-                                        <div class="panel-footer back-footer-blue">
-                                            Pendiente
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>

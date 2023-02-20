@@ -4,7 +4,6 @@ import { useAuth } from "../context/AuthContext";
 
 export function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
-
   if (loading) return <h1>Cargando página</h1>;
 
   if (!user) return <Navigate to="/" />;

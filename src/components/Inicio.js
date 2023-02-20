@@ -2,10 +2,15 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Navigate } from "react-router-dom";
 import $ from 'jquery';
 import { savematricula } from "../database";
 import { uploadcomprobante } from "../firebase";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase";
+
 export function Inicio() {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Módulo de Gestión de Trámites"
   }, []);
@@ -22,6 +27,40 @@ export function Inicio() {
   };
   const [urlimg, seturlimg] = useState(user.photoURL);
   console.log(urlimg);
+
+
+  //fin consulta de datos
+ const [pendientes, setpendientes] = useState([])
+ const mpendientes = async () => {
+
+     const q1 = query(collection(db, "matriculas-pendientes"), where("user_id", "==", user.uid));
+     const unsubscribe = onSnapshot(q1, (data1) => {
+         const docs2 = [];
+         data1.forEach((doc) => {
+             console.log("pendientes", doc.data())
+             docs2.push({ ...doc.data(), id: doc.id });
+
+         });
+         setpendientes(docs2)
+     })
+ }
+ useEffect(() => {
+     mpendientes();
+ }, [])
+ {
+ 
+  if(pendientes.length==0){
+    navigate("/matricula")
+  }
+  if(pendientes.length>=1){
+    navigate("/estado-matricula")
+  }
+  pendientes.map((blog) => {
+    console.log(blog.nombre,"datoooooosss")
+})
+
+ };
+ 
 
   return (
     <div id="wrapper">
