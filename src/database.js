@@ -11,12 +11,14 @@ import {
 import { db } from "./firebase";
 
 const collectionName = "matriculas-pendientes";
-const collectpendiente = "reservas-pendientes";
+const collectpendiente = "Fichas-socioeconomicas";
 
 export const savematricula = (newMatricula) =>
   addDoc(collection(db, collectionName), newMatricula);
+
 export const matricula = (Matricula) =>
 addDoc(collection(db, "Matriculados"), Matricula);
+
 export const ficha = (Ficha) =>
 addDoc(collection(db, "Fichas-socioeconomicas"), Ficha);
 

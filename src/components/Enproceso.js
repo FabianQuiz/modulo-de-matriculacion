@@ -43,7 +43,6 @@ export function Estado() {
      mpendientes();
  }, [])
  {
-    
   if (pendientes.length === 1) navigate("/inicio") ;
  };
     return (

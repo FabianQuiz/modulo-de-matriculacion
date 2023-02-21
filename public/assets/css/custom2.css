@@ -205,3 +205,10 @@ display: contents;
     .h{
         margin-top: 1px;
     }}
+    table{
+        background-color: white;
+        text-align: center;
+    }
+    th{
+        text-align: center;
+    }
