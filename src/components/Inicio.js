@@ -76,17 +76,12 @@ export function Inicio() {
       </nav>
 
 
-      <div id="page-wrapper" >
-        <div id="page-inner">
-          <h2>Bienvenido</h2>
+      
 
 
           {user.email === "anali.cazar@unl.edu.ec" ? <Adminview /> : <Userview />}
 
-        </div>
-
-
-      </div>
+        
 
 
       <div class="page-footer">

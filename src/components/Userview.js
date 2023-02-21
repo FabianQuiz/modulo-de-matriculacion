@@ -69,7 +69,9 @@ useEffect(() => {
  
 
   return (
-   
+    <div id="page-wrapper" >
+    <div id="page-inner">
+      <h2>Bienvenido</h2>
           <div class="col-md-12">
             <div class="profile-sidebar">
               <div class="card">
@@ -112,9 +114,9 @@ useEffect(() => {
             </div>
 
           </div>
+          </div>
 
-
-
+          </div>
 
   );
 }
